@@ -8,18 +8,9 @@ var googleUserAuthModule = ( function(window) {
 
 		$utils.loadSDK = function() {
 
-			$.getScript("https://apis.google.com/js/platform.js", function(data, textStatus, jqxhr) {
-				console.log(data);
-				// Data returned
-				console.log(textStatus);
-				// Success
-				console.log(jqxhr.status);
-				// 200
-				console.log("Load was performed.");
+			var dfd = $.getScript("https://apis.google.com/js/platform.js", function(data, textStatus, jqxhr) {
 			});
-
-			// var dfd = $.Deferred();
-			// return dfd;
+			return dfd;
 		};
 
 		$utils.initSDK = function() {
