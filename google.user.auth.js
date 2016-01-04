@@ -6,7 +6,7 @@ var googleUserAuthModule = ( function(window) {
 
 		var $utils = {};
 
-		$utils.loadSDK = function() {
+		$utils.initSDK = function() {
 
 			var self = this;
 
@@ -15,24 +15,21 @@ var googleUserAuthModule = ( function(window) {
 				parsetags : 'onload'
 			};
 
-			var dfd = $.getScript("https://apis.google.com/js/platform.js?onload=googleUserAuthModule.initSDK", function(data, textStatus, jqxhr) {
+			var dfd = $.getScript("https://apis.google.com/js/platform.js", function(data, textStatus, jqxhr) {
+
+				gapi.load('auth2', function() {
+
+					auth2 = gapi.auth2.init({
+						client_id : '716767626523-69guob57j4cs4fb40gpa53iv2mvna9vd.apps.googleusercontent.com',
+						fetch_basic_profile : false,
+						scope : 'profile'
+					});
+
+					console.dir(auth2);
+
+				});
 			});
 			return dfd;
-		};
-
-		$utils.initSDK = function() {
-			
-			console.dir(gapi);
-
-			gapi.load('auth2', function() {
-
-				auth2 = gapi.auth2.init({
-					client_id : '716767626523-69guob57j4cs4fb40gpa53iv2mvna9vd.apps.googleusercontent.com',
-					fetch_basic_profile : false,
-					scope : 'profile'
-				});
-
-			});
 		};
 
 		$utils.doAuth = function() {
