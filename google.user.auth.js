@@ -18,7 +18,7 @@ var googleUserAuthModule = ( function(window) {
 						return;
 					js = d.createElement(s);
 					js.id = id;
-					js.src = 'https://apis.google.com/js/platform.js';
+					js.src = 'https://apis.google.com/js/platform.js?onload=googleUserAuthModule.initSDK';
 					fjs.parentNode.insertBefore(js, fjs);
 
 					console.dir('Load the Google Javascript SDK asynchronously');
@@ -30,6 +30,8 @@ var googleUserAuthModule = ( function(window) {
 		};
 
 		$utils.initSDK = function() {
+			
+			alert(111);
 
 			gapi.load('auth2', function() {
 
