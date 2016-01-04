@@ -8,6 +8,10 @@
 
 * jQuery（只能跪了...）
 
+### Installation
+
+bower install urGoogle
+
 ### Usage
 
 Initialize
