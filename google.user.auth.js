@@ -28,48 +28,28 @@ var googleUserAuthModule = ( function(window) {
 			return this;
 		};
 
-		/**
-		 * @param {Object} setting
-		 */
-		$utils.initSDK = function(setting) {
-
-			setting = typeof setting !== 'undefined' ? setting : {
-				version : 'v2.5'
-			};
-			setting.version = typeof setting.version !== 'undefined' ? setting.version : 'v2.5';
-
-			window.fbAsyncInit = function() {
-				FB.init({
-					appId : setting.appId,
-					cookie : true,
-					status : false,
-					xfbml : false,
-					version : setting.version
-				});
-				console.dir('window.fbAsyncInit');
-			};
-			return this;
-		};
-
-		/**
-		 * @param {Object} setting
-		 */
-		$utils.doAuth = function() {
-
-			alert(gapi.auth2.GoogleUser.isSignedIn());
+		$utils.initSDK = function() {
 
 			gapi.load('auth2', function() {
+
 				auth2 = gapi.auth2.init({
 					client_id : '716767626523-69guob57j4cs4fb40gpa53iv2mvna9vd.apps.googleusercontent.com',
 					fetch_basic_profile : false,
 					scope : 'profile'
 				});
 
-				// Sign the user in, and then retrieve their ID.
-				auth2.signIn().then(function() {
-					console.log(auth2.currentUser.get().getId());
-				});
 			});
+		};
+
+		$utils.doAuth = function() {
+
+			// alert(gapi.auth2.GoogleUser.isSignedIn());
+
+			// Sign the user in, and then retrieve their ID.
+			auth2.signIn().then(function() {
+				console.log(auth2.currentUser.get().getId());
+			});
+
 		};
 
 		/**
