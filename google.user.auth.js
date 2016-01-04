@@ -32,7 +32,7 @@ var googleUserAuthModule = ( function(window) {
 
 		$utils.doAuth = function() {
 
-			auth2.signIn().then(function(googleUser) { cvar
+			auth2.signIn().then(function(googleUser) {
 				var profile = googleUser.getBasicProfile();
 				console.log('ID: ' + profile.getId());
 				console.log('Name: ' + profile.getName());
