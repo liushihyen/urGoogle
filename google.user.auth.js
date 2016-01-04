@@ -6,14 +6,19 @@ var googleUserAuthModule = ( function(window) {
 
 		var $utils = {};
 
-		$utils.initSDK = function() {
+		$utils.initSDK = function(clientId, options) {
+
+			if (!clientId) {
+				console.dir('clientId os required!');
+				return false;
+			}
 
 			var dfd = $.getScript("https://apis.google.com/js/platform.js", function(data, textStatus, jqxhr) {
 
 				gapi.load('auth2', function() {
 
 					auth2 = gapi.auth2.init({
-						client_id : '716767626523-69guob57j4cs4fb40gpa53iv2mvna9vd.apps.googleusercontent.com',
+						client_id : options.clientId,
 						fetch_basic_profile : true,
 						scope : 'profile'
 					});
