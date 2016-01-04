@@ -5,6 +5,8 @@
 var googleUserAuthModule = ( function(window) {
 
 		var $utils = {};
+		
+		var googleJsSDK = 'https://apis.google.com/js/platform.js';
 
 		$utils.initSDK = function(clientId, options) {
 
@@ -13,7 +15,7 @@ var googleUserAuthModule = ( function(window) {
 				return false;
 			}
 
-			var dfd = $.getScript("https://apis.google.com/js/platform.js", function(data, textStatus, jqxhr) {
+			var dfd = $.getScript(googleJsSDK, function(data, textStatus, jqxhr) {
 
 				gapi.load('auth2', function() {
 
