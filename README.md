@@ -35,3 +35,5 @@ $('#js-doGoogleLogin').on('click', '', {}, function(event) {
 });
 ``` 
 ### TODO
+
+* 改為完全不用相依在jQuery上
