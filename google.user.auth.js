@@ -31,6 +31,8 @@ var googleUserAuthModule = ( function(window) {
 		};
 
 		$utils.doAuth = function() {
+			
+			console.dir(auth2);
 
 			auth2.signIn().then(function() {
 
