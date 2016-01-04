@@ -8,9 +8,14 @@ var googleUserAuthModule = ( function(window) {
 
 		$utils.loadSDK = function() {
 
+			var self = this;
+
 			var dfd = $.getScript("https://apis.google.com/js/platform.js", function(data, textStatus, jqxhr) {
 			});
-			return dfd;
+			dfd.then(function() {
+				// self.initSDK();
+				return self;
+			});
 		};
 
 		$utils.initSDK = function() {
