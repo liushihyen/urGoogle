@@ -25,8 +25,6 @@ var googleUserAuthModule = ( function(window) {
 						scope : 'profile'
 					});
 
-					console.dir(auth2);
-
 				});
 			});
 			return dfd;
