@@ -25,11 +25,6 @@ var googleUserAuthModule = ( function(window) {
 
 				}(document, 'script', 'google-jssdk'));
 
-			var meta = document.createElement('meta');
-			meta.name = 'google-signin-client_id';
-			meta.content = '716767626523-69guob57j4cs4fb40gpa53iv2mvna9vd.apps.googleusercontent.com';
-			document.getElementsByTagName('head')[0].appendChild(meta);
-
 			return this;
 		};
 
@@ -59,54 +54,20 @@ var googleUserAuthModule = ( function(window) {
 		/**
 		 * @param {Object} setting
 		 */
-		$utils.doFbAuth = function(setting) {
+		$utils.doAuth = function() {
+			
+			gapi.load('auth2', function() {
+				auth2 = gapi.auth2.init({
+					client_id : '716767626523-69guob57j4cs4fb40gpa53iv2mvna9vd.apps.googleusercontent.com',
+					fetch_basic_profile : false,
+					scope : 'profile'
+				});
 
-			var self = this;
-
-			setting = typeof setting !== 'undefined' ? setting : {
-				scope : ['public_profile', 'email']
-			};
-
-			var defaultScope = [];
-			defaultScope.push('public_profile');
-			defaultScope.push('email');
-
-			if ( typeof setting.scpoe === 'object' && setting.scpoe.length === 0) {
-				setting.scpoe = defaultScope;
-			}
-
-			var dfd = new $.Deferred();
-
-			// 檢查使用者的臉書登入狀況以及是否已經授權奧創
-			FB.getLoginStatus(function(response) {
-
-				if (response.status === 'connected') {
-					// 如果使用者已經登入Facebook而且也已經授權過奧創
-					dfd.resolve(self, response);
-
-				} else if (response.status === 'not_authorized') {
-					// 使用者已經登入Facebook但尚未受奧創控制
-					FB.login(function(response) {
-
-						if (response.status === 'connected') {
-							// 使用者完成對奧創的授權
-
-							dfd.resolve(self, response);
-
-						} else if (response.status === 'not_authorized') {
-							// 使用者不對奧創授權
-						} else {
-						}
-					}, {
-						scope : setting.scope.join(','),
-						return_scopes : true
-					});
-
-				} else {
-				}
+				// Sign the user in, and then retrieve their ID.
+				auth2.signIn().then(function() {
+					console.log(auth2.currentUser.get().getId());
+				});
 			});
-
-			return dfd;
 		};
 
 		/**
