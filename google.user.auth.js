@@ -18,7 +18,7 @@ var googleUserAuthModule = ( function(window) {
 				gapi.load('auth2', function() {
 
 					auth2 = gapi.auth2.init({
-						client_id : options.clientId,
+						client_id : clientId,
 						fetch_basic_profile : true,
 						scope : 'profile'
 					});
