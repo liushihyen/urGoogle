@@ -21,6 +21,8 @@ var googleUserAuthModule = ( function(window) {
 		};
 
 		$utils.initSDK = function() {
+			
+			console.dir(gapi);
 
 			gapi.load('auth2', function() {
 
