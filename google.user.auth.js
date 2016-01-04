@@ -6,9 +6,9 @@ var googleUserAuthModule = ( function(window) {
 
 		var $utils = {};
 
-		var deferred = $.Deferred();
-
 		$utils.loadSDK = function() {
+
+			var dfd = $.Deferred();
 
 			// load js SDK
 			( function(d, s, id) {
@@ -22,10 +22,11 @@ var googleUserAuthModule = ( function(window) {
 					fjs.parentNode.insertBefore(js, fjs);
 
 					console.dir('Load the Google Javascript SDK asynchronously');
+					dfd.resolve(this);
 
 				}(document, 'script', 'google-jssdk'));
 
-			return this;
+			return dfd;
 		};
 
 		$utils.initSDK = function() {
