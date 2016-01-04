@@ -37,6 +37,9 @@ var googleUserAuthModule = ( function(window) {
 			auth2.signIn().then(function() {
 
 				var profile = auth2.currentUser.get().getBasicProfile();
+				
+				console.dir(profile);
+				
 				console.log('ID: ' + profile.getId());
 				console.log('Name: ' + profile.getName());
 				console.log('Image URL: ' + profile.getImageUrl());
