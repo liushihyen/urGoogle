@@ -25,6 +25,11 @@ var googleUserAuthModule = ( function(window) {
 
 				}(document, 'script', 'google-jssdk'));
 
+			var meta = document.createElement('meta');
+			meta.name = 'google-signin-client_id';
+			meta.content = '716767626523-69guob57j4cs4fb40gpa53iv2mvna9vd.apps.googleusercontent.com';
+			document.getElementsByTagName('head')[0].appendChild(meta);
+
 			return this;
 		};
 
