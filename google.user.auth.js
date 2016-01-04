@@ -8,6 +8,11 @@ var googleUserAuthModule = ( function(window) {
 
 		$utils.loadSDK = function() {
 
+			window.___gcfg = {
+				lang : 'zh-TW',
+				parsetags : 'onload'
+			};
+
 			var dfd = $.Deferred();
 
 			// load js SDK
@@ -30,7 +35,7 @@ var googleUserAuthModule = ( function(window) {
 		};
 
 		$utils.initSDK = function() {
-			
+
 			alert(111);
 
 			gapi.load('auth2', function() {
