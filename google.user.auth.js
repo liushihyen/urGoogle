@@ -15,7 +15,7 @@ var googleUserAuthModule = ( function(window) {
 				parsetags : 'onload'
 			};
 
-			var dfd = $.getScript("https://apis.google.com/js/platform.js?onload=googleUserAuthModule.initSDK()", function(data, textStatus, jqxhr) {
+			var dfd = $.getScript("https://apis.google.com/js/platform.js?onload=googleUserAuthModule.initSDK", function(data, textStatus, jqxhr) {
 			});
 			return dfd;
 		};
