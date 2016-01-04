@@ -8,30 +8,18 @@ var googleUserAuthModule = ( function(window) {
 
 		$utils.loadSDK = function() {
 
-			window.___gcfg = {
-				lang : 'zh-TW',
-				parsetags : 'onload'
-			};
+			$.getScript("https://apis.google.com/js/platform.js", function(data, textStatus, jqxhr) {
+				console.log(data);
+				// Data returned
+				console.log(textStatus);
+				// Success
+				console.log(jqxhr.status);
+				// 200
+				console.log("Load was performed.");
+			});
 
-			var dfd = $.Deferred();
-
-			// load js SDK
-			( function(d, s, id) {
-					var js,
-					    fjs = d.getElementsByTagName(s)[0];
-					if (d.getElementById(id))
-						return;
-					js = d.createElement(s);
-					js.id = id;
-					js.src = 'https://apis.google.com/js/platform.js?onload=googleUserAuthModule.initSDK';
-					fjs.parentNode.insertBefore(js, fjs);
-
-					console.dir('Load the Google Javascript SDK asynchronously');
-					dfd.resolve(this);
-
-				}(document, 'script', 'google-jssdk'));
-
-			return dfd;
+			// var dfd = $.Deferred();
+			// return dfd;
 		};
 
 		$utils.initSDK = function() {
