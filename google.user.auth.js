@@ -10,17 +10,17 @@ var googleUserAuthModule = ( function(window) {
 
 			var self = this;
 
-			var dfd = $.getScript("https://apis.google.com/js/platform.js", function(data, textStatus, jqxhr) {
+			window.___gcfg = {
+				lang : 'zh-CN',
+				parsetags : 'onload'
+			};
+
+			var dfd = $.getScript("https://apis.google.com/js/platform.js?onload=googleUserAuthModule.initSDK()", function(data, textStatus, jqxhr) {
 			});
-			dfd.then(function() {
-				// self.initSDK();
-				return self;
-			});
+			return dfd;
 		};
 
 		$utils.initSDK = function() {
-
-			alert(111);
 
 			gapi.load('auth2', function() {
 
