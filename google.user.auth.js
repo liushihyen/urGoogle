@@ -21,7 +21,7 @@ var googleUserAuthModule = ( function(window) {
 
 					auth2 = gapi.auth2.init({
 						client_id : '716767626523-69guob57j4cs4fb40gpa53iv2mvna9vd.apps.googleusercontent.com',
-						fetch_basic_profile : false,
+						fetch_basic_profile : true,
 						scope : 'profile'
 					});
 
@@ -31,12 +31,15 @@ var googleUserAuthModule = ( function(window) {
 		};
 
 		$utils.doAuth = function() {
-			
-			console.dir(auth2);
 
 			auth2.signIn().then(function() {
-				console.log(auth2.currentUser.get().getId());
-				console.log(auth2.currentUser.get().getEmail());
+
+				var profile = auth2.currentUser.get().getBasicProfile();
+				console.log('ID: ' + profile.getId());
+				console.log('Name: ' + profile.getName());
+				console.log('Image URL: ' + profile.getImageUrl());
+				console.log('Email: ' + profile.getEmail());
+
 			});
 
 		};
