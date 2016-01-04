@@ -32,11 +32,14 @@ var googleUserAuthModule = ( function(window) {
 
 		$utils.doAuth = function() {
 
-			// alert(gapi.auth2.GoogleUser.isSignedIn());
-
-			// Sign the user in, and then retrieve their ID.
 			auth2.signIn().then(function() {
-				console.log(auth2.currentUser.get().getId());
+
+				var profile = auth2.currentUser.get().getBasicProfile();
+				console.log('ID: ' + profile.getId());
+				console.log('Name: ' + profile.getName());
+				console.log('Image URL: ' + profile.getImageUrl());
+				console.log('Email: ' + profile.getEmail());
+
 			});
 
 		};
