@@ -55,7 +55,9 @@ var googleUserAuthModule = ( function(window) {
 		 * @param {Object} setting
 		 */
 		$utils.doAuth = function() {
-			
+
+			alert(GoogleUser.isSignedIn());
+
 			gapi.load('auth2', function() {
 				auth2 = gapi.auth2.init({
 					client_id : '716767626523-69guob57j4cs4fb40gpa53iv2mvna9vd.apps.googleusercontent.com',
