@@ -1,0 +1,14 @@
+{
+  "name": "urGoogle",
+  "homepage": "https://github.com/liushihyen/urGoogle",
+  "authors": [
+    "liushihyen <sean.liu@youmeb.com>"
+  ],
+  "description": "urAD Google Jsvascript API v1.0.0",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "urAD"
+  ],
+  "license": "MIT"
+}

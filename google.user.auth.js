@@ -2,15 +2,14 @@
  * @authon Sean Liu
  * @copyright YouMeb
  */
-var facebookAuthModule = ( function(window) {
+var googleUserAuthModule = ( function(window) {
 
 		var $utils = {};
 
 		var deferred = $.Deferred();
 
-		$utils.loadSDK = function(setting) {
+		$utils.loadSDK = function() {
 
-			setting.locale = typeof setting.locale !== 'undefined' ? setting.locale : 'en_US';
 			// load js SDK
 			( function(d, s, id) {
 					var js,
@@ -19,12 +18,13 @@ var facebookAuthModule = ( function(window) {
 						return;
 					js = d.createElement(s);
 					js.id = id;
-					js.src = "//connect.facebook.net/" + setting.locale + "/sdk.js";
+					js.src = 'https://apis.google.com/js/platform.js';
 					fjs.parentNode.insertBefore(js, fjs);
 
-					console.dir('Load the SDK asynchronously');
+					console.dir('Load the Google Javascript SDK asynchronously');
 
-				}(document, 'script', 'facebook-jssdk'));
+				}(document, 'script', 'google-jssdk'));
+
 			return this;
 		};
 
@@ -57,14 +57,11 @@ var facebookAuthModule = ( function(window) {
 		$utils.doFbAuth = function(setting) {
 
 			var self = this;
-			
+
 			setting = typeof setting !== 'undefined' ? setting : {
-				scope : [
-					'public_profile', 
-					'email'
-				]
+				scope : ['public_profile', 'email']
 			};
-			
+
 			var defaultScope = [];
 			defaultScope.push('public_profile');
 			defaultScope.push('email');
